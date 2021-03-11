@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.ByteBuffer;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
@@ -7,8 +8,8 @@ import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
-public class Skill {
-    private int id;
+public class Skill implements Serializable {
+    private Integer id;
     private String name;
 
     public Skill(int id, String name) {
@@ -39,6 +40,7 @@ public class Skill {
                 ", name='" + name + '\'' +
                 '}';
     }
+/*
 
     static void writingToFile(String fileName, Skill skill) {
         try (FileChannel fileChannel = (FileChannel) Files.newByteChannel(
@@ -74,11 +76,5 @@ public class Skill {
             System.out.println("Ошибка ввода-вывода " + e);
         }
     }
-
-    public static void main(String[] args) {
-        Skill skill = new Skill(555, "Programming Java");
-        String fileName = "test.txt";
-        writingToFile(fileName, skill);
-        readingFromFile(fileName);
-    }
+*/
 }
