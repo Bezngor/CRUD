@@ -42,14 +42,14 @@ public class Skill implements Serializable {
     }
 /*
 
-    static void writingToFile(String fileName, Skill skill) {
+    static void writingToFile(String fileName, Skill skill.txt) {
         try (FileChannel fileChannel = (FileChannel) Files.newByteChannel(
                 Paths.get(fileName),
                 StandardOpenOption.WRITE,
                 StandardOpenOption.CREATE))
         {
             ByteBuffer byteBuffer = ByteBuffer.allocate(128);
-            byteBuffer.put(skill.toString().getBytes());
+            byteBuffer.put(skill.txt.toString().getBytes());
             byteBuffer.rewind();
             fileChannel.write(byteBuffer);
         } catch (InvalidPathException e) {

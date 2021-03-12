@@ -10,12 +10,7 @@ public class SkillRepository {
 
     public Skill getById(Integer id) {
         List<Skill> skills = readingFromFile();
-        Skill result = null;
-        for (Skill s : skills) {
-            if (s.getId() == id)
-                result = s;
-        }
-        return result;
+        return skills.stream().filter(s -> id == s.getId()).findFirst().get();
     }
 
     public void save(Skill skill) {
@@ -32,33 +27,20 @@ public class SkillRepository {
 
     public void update(Skill skill) {
         List<Skill> skills = readingFromFile();
-        Skill updSkill = null;
-        for (Skill s : skills) {
-            if (s.getId() == skill.getId()) {
-                updSkill = s;
-                break;
-            }
-        }
+        Skill updSkill = skills.stream().filter(s -> s.getId() == skill.getId()).findFirst().get();
         updSkill.setName(skill.getName());
         writingToFile(skills);
     }
 
     public void deleteById(Integer id) {
         List<Skill> skills = readingFromFile();
-        Skill delSkill = null;
-        for (Skill s : skills) {
-            if (s.getId() == id) {
-                delSkill = s;
-                break;
-            }
-        }
-        skills.remove(delSkill);
+        skills.removeIf(s -> s.getId() == id);
         writingToFile(skills);
     }
 
-    private static void writingToFile(List<Skill> skills) {
+    private void writingToFile(List<Skill> skills) {
         try (ObjectOutputStream outputStream = new ObjectOutputStream(
-                new FileOutputStream("C:\\Users\\User\\IdeaProjects\\CRUD\\src\\main.resources.files.skills")))
+                new FileOutputStream("C:\\Users\\User\\IdeaProjects\\CRUD\\src\\main\\resources\\files\\skill.txt")))
         {
             outputStream.writeObject(skills);
         } catch (IOException e) {
@@ -66,10 +48,10 @@ public class SkillRepository {
         }
     }
 
-    private static List<Skill> readingFromFile() {
+    private List<Skill> readingFromFile() {
         List<Skill> skills = new ArrayList<>();
         try (ObjectInputStream inputStream = new ObjectInputStream(
-                new FileInputStream("C:\\Users\\User\\IdeaProjects\\CRUD\\src\\main.resources.files.skills")))
+                new FileInputStream("C:\\Users\\User\\IdeaProjects\\CRUD\\src\\main\\resources\\files\\skill.txt")))
         {
             skills = (List<Skill>) inputStream.readObject();
         } catch (FileNotFoundException | ClassNotFoundException e) {
