@@ -12,7 +12,11 @@ public class Skill implements Serializable {
     private Integer id;
     private String name;
 
-    public Skill(int id, String name) {
+    public Skill(String name) {
+        this.name = name;
+    }
+
+    public Skill(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -35,10 +39,7 @@ public class Skill implements Serializable {
 
     @Override
     public String toString() {
-        return "Skill{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return id + "," + name + '/';
     }
 /*
 
