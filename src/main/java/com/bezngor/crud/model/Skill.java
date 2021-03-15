@@ -1,6 +1,5 @@
 package main.java.com.bezngor.crud.model;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.nio.ByteBuffer;
 import java.nio.MappedByteBuffer;
