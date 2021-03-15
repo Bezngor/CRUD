@@ -40,7 +40,6 @@ public class SkillRepository {
         Skill updSkill = skills.stream().filter(s -> s.getId() == skill.getId()).findFirst().orElse(null);
         updSkill.setName(skill.getName());
         writingToFile(convertSkillsToString(skills));
-
         return updSkill;
     }
 
