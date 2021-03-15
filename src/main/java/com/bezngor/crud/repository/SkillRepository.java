@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class SkillRepository {
+public class SkillRepository implements GenericRepository<Skill, Integer>{
 
     public static final String FILE_NAME =
             "C:\\Users\\User\\IdeaProjects\\CRUD\\src\\main\\resources\\files\\skill.txt";
@@ -26,7 +26,7 @@ public class SkillRepository {
             skill.setId(1);
         } else {
             Integer id = Collections.max(
-                    skills.stream().map(s -> s.getId()).collect(Collectors.toList()));
+                    skills.stream().map(Skill::getId).collect(Collectors.toList()));
             skill.setId(id + 1);
         }
 
