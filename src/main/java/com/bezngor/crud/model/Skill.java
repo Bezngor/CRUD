@@ -1,7 +1,7 @@
-package main.java.com.bezngor.crud.model;
+package com.bezngor.crud.model;
 
 import java.io.Serializable;
-gi
+
 public class Skill implements Serializable {
     private Integer id;
     private String name;

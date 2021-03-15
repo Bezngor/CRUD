@@ -1,6 +1,7 @@
-import main.java.com.bezngor.crud.model.Skill;
-import main.java.com.bezngor.crud.repository.SkillRepository;
+package main;
 
+import com.bezngor.crud.model.Skill;
+import com.bezngor.crud.repository.SkillRepository;
 import java.util.List;
 
 public class Main {

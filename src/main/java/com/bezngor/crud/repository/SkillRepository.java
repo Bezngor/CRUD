@@ -1,6 +1,6 @@
-package main.java.com.bezngor.crud.repository;
+package com.bezngor.crud.repository;
 
-import main.java.com.bezngor.crud.model.Skill;
+import com.bezngor.crud.model.Skill;
 
 import java.io.*;
 import java.util.*;
