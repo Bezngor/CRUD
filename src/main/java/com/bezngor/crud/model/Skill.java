@@ -1,14 +1,7 @@
 package main.java.com.bezngor.crud.model;
 
 import java.io.Serializable;
-import java.nio.ByteBuffer;
-import java.nio.MappedByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-
+gi
 public class Skill implements Serializable {
     private Integer id;
     private String name;
