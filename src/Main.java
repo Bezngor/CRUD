@@ -1,4 +1,6 @@
-import java.io.IOException;
+import main.java.com.bezngor.crud.model.Skill;
+import main.java.com.bezngor.crud.repository.SkillRepository;
+
 import java.util.List;
 
 public class Main {

@@ -1,3 +1,5 @@
+package main.java.com.bezngor.crud.model;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.nio.ByteBuffer;
@@ -43,7 +45,7 @@ public class Skill implements Serializable {
     }
 /*
 
-    static void writingToFile(String fileName, Skill skill.txt) {
+    static void writingToFile(String fileName, main.java.com.bezngor.crud.model.Skill skill.txt) {
         try (FileChannel fileChannel = (FileChannel) Files.newByteChannel(
                 Paths.get(fileName),
                 StandardOpenOption.WRITE,
