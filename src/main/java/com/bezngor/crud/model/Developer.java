@@ -15,6 +15,16 @@ public class Developer {
         this.skills = skills;
     }
 
+    public Developer(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public Developer(Integer id, List<Skill> skills) {
+        this.id = id;
+        this.skills = skills;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -45,5 +55,15 @@ public class Developer {
 
     public void setSkills(List<Skill> skills) {
         this.skills = skills;
+    }
+
+    @Override
+    public String toString() {
+        return "Developer{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", skills=" + skills +
+                '}';
     }
 }

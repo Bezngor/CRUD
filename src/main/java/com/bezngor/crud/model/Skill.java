@@ -11,6 +11,10 @@ public class Skill implements Serializable {
         this.name = name;
     }
 
+    public Skill(String name) {
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }
@@ -25,5 +29,13 @@ public class Skill implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Skill{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

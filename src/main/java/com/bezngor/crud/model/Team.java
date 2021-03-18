@@ -5,12 +5,17 @@ import java.util.List;
 public class Team {
     private Integer id;
     private String name;
-    private List<Post> posts;
+    private List<Developer> devs;
 
-    public Team(Integer id, String name, List<Post> posts) {
+    public Team(Integer id, String name, List<Developer> devs) {
         this.id = id;
         this.name = name;
-        this.posts = posts;
+        this.devs = devs;
+    }
+
+    public Team(String name, List<Developer> devs) {
+        this.name = name;
+        this.devs = devs;
     }
 
     public Integer getId() {
@@ -29,11 +34,20 @@ public class Team {
         this.name = name;
     }
 
-    public List<Post> getPosts() {
-        return posts;
+    public List<Developer> getDevs() {
+        return devs;
     }
 
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
+    public void setDevs(List<Developer> devs) {
+        this.devs = devs;
+    }
+
+    @Override
+    public String toString() {
+        return "Team{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", devs=" + devs +
+                '}';
     }
 }
