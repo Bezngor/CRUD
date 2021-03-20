@@ -30,6 +30,11 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
 
     @Override
     public Developer save(Developer dev) {
+        writingToFile(convertDevsToString(this.generationId(dev)));
+        return dev;
+    }
+
+    private List<Developer> generationId(Developer dev) {
         List<Developer> devs = readingFromFile();
         if (devs.size() == 0) {
             dev.setId(1);
@@ -38,25 +43,17 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
                     devs.stream().map(Developer::getId).collect(Collectors.toList()));
             dev.setId(id + 1);
         }
-
         devs.add(dev);
-        writingToFile(convertDevsToString(devs));
-        return dev;
+        return devs;
     }
 
     @Override
     public Developer update(Developer dev) {
         List<Developer> devs = readingFromFile();
         Developer updDev = devs.stream().filter(s -> s.getId() == dev.getId()).findFirst().orElse(null);
-        if (dev.getFirstName() != null) {
-            updDev.setFirstName(dev.getFirstName());
-        }
-        if (dev.getLastName() !=  null) {
-            updDev.setLastName(dev.getLastName());
-        }
-        if (dev.getSkills() != null) {
-            updDev.setSkills(dev.getSkills());
-        }
+        updDev.setFirstName(dev.getFirstName());
+        updDev.setLastName(dev.getLastName());
+        updDev.setSkills(dev.getSkills());
         writingToFile(convertDevsToString(devs));
         return updDev;
     }

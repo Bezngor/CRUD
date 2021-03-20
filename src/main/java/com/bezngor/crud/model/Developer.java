@@ -20,11 +20,6 @@ public class Developer {
         this.lastName = lastName;
     }
 
-    public Developer(Integer id, List<Skill> skills) {
-        this.id = id;
-        this.skills = skills;
-    }
-
     public Integer getId() {
         return id;
     }
