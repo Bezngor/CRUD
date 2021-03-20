@@ -91,20 +91,15 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
             listDevs = Arrays.stream(strDevs.split("\n"))
                     .map(d -> {
                         List<Skill> skills = new ArrayList<>();
-                        String[] arrDev = d.split("--");
+                        String[] arrDev = d.split("<>");
                         String[] arrDevFields = arrDev[0].split(",");
 
-                        if (arrDev.length > 1) {
-                            String[] arrSklFields = arrDev[1].split(";");
-
-                            for (String s : arrSklFields) {
-                                Object[] arrIdName = s.split(",");
-                                skills.add(new Skill(Integer.parseInt((String) arrIdName[0]), (String) arrIdName[1]));
-                            }
-                        }
+                        if (arrDev.length > 1)
+                            skills = Arrays.stream(arrDev[1].split(","))
+                                    .map(s -> new JavaIOSkillRepositoryImpl().getById(Integer.parseInt(s)))
+                                    .collect(Collectors.toList());
                         return new Developer(Integer.parseInt(arrDevFields[0]), arrDevFields[1], arrDevFields[2], skills);
-                    })
-                    .collect(Collectors.toList());
+                    }).collect(Collectors.toList());
         }
         return listDevs;
     }
@@ -113,10 +108,10 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
         StringBuilder sb = new StringBuilder();
         for (Developer d : devs) {
             sb.append(d.getId()).append(",").append(d.getFirstName())
-                    .append(",").append(d.getLastName()).append("--");
+                    .append(",").append(d.getLastName()).append("<>");
             if (d.getSkills() != null) {
                 for (Skill s : d.getSkills()) {
-                    sb.append(s.getId()).append(",").append(s.getName()).append(";");
+                    sb.append(s.getId()).append(",");
                 }
             }
             sb.append("\n");

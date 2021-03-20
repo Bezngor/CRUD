@@ -8,7 +8,6 @@ import com.bezngor.crud.repository.JavaIOSkillRepositoryImpl;
 import com.bezngor.crud.repository.JavaIOTeamRepositoryImpl;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {

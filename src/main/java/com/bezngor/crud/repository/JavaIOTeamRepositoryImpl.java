@@ -91,49 +91,28 @@ public class JavaIOTeamRepositoryImpl implements TeamRepository {
             listTeams = Arrays.stream(strTeams.split("\n"))
                     .map(t -> {
                         List<Developer> devs = new ArrayList<>();
-                        String[] arrTm = t.split("-:-");
+                        String[] arrTm = t.split("<>");
                         String[] arrTmFields = arrTm[0].split(",");
                         if (arrTm.length > 1) {
-                            devs = Arrays.stream(arrTm[1].split("<>"))
-                                    .map(d -> {
-                                        List<Skill> skills = new ArrayList<>();
-                                        String[] arrDev = d.split("--");
-                                        String[] arrDevFields = arrDev[0].split(",");
-                                        if (arrDev.length > 1) {
-                                            skills = Arrays.stream(arrDev[1].split(";"))
-                                                    .map(s -> {
-                                                        String[] arrSklFields = s.split(",");
-                                                        return new Skill(Integer.parseInt(arrSklFields[0]), arrSklFields[1]);
-                                                    }).collect(Collectors.toList());
-                                        }
-                                        return new Developer(Integer.parseInt(arrDevFields[0]),
-                                                arrDevFields[1], arrDevFields[2], skills);
-                                    }).collect(Collectors.toList());
+                            devs = Arrays.stream(arrTm[1].split(","))
+                                    .map(d -> new JavaIODeveloperRepositoryImpl().getById(Integer.parseInt(d)))
+                                    .collect(Collectors.toList());
                         }
                         return new Team(Integer.parseInt(arrTmFields[0]), arrTmFields[1], devs);
                     })
                     .collect(Collectors.toList());
         }
-
         return listTeams;
     }
-
 
     private String convertTeamsToString(List<Team> teams) {
         StringBuilder sb = new StringBuilder();
         if (teams.size() != 0) {
             for (Team t : teams) {
-                sb.append(t.getId()).append(",").append(t.getName()).append("-:-");
+                sb.append(t.getId()).append(",").append(t.getName()).append("<>");
                 if (t.getDevs() != null) {
                     for (Developer d : t.getDevs()) {
-                        sb.append(d.getId()).append(",").append(d.getFirstName())
-                                .append(",").append(d.getLastName()).append("--");
-                        if (d.getSkills() != null) {
-                            for (Skill s : d.getSkills()) {
-                                sb.append(s.getId()).append(",").append(s.getName()).append(";");
-                            }
-                        }
-                        sb.append("<>");
+                        sb.append(d.getId()).append(",");
                     }
                 }
                 sb.append("\n");
