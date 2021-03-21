@@ -17,6 +17,8 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
     public static final String FILE_NAME =
             "C:\\Users\\User\\IdeaProjects\\CRUD\\src\\main\\resources\\files\\developers.txt";
 
+    private JavaIOSkillRepositoryImpl skillRepo = new JavaIOSkillRepositoryImpl();
+
     @Override
     public List<Developer> getAll() {
         return readingFromFile();
@@ -96,7 +98,7 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
 
                         if (arrDev.length > 1)
                             skills = Arrays.stream(arrDev[1].split(","))
-                                    .map(s -> new JavaIOSkillRepositoryImpl().getById(Integer.parseInt(s)))
+                                    .map(s -> skillRepo.getById(Integer.parseInt(s)))
                                     .collect(Collectors.toList());
                         return new Developer(Integer.parseInt(arrDevFields[0]), arrDevFields[1], arrDevFields[2], skills);
                     }).collect(Collectors.toList());

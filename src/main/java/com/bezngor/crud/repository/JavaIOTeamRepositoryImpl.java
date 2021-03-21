@@ -18,6 +18,8 @@ public class JavaIOTeamRepositoryImpl implements TeamRepository {
     public static final String FILE_NAME =
             "C:\\Users\\User\\IdeaProjects\\CRUD\\src\\main\\resources\\files\\teams.txt";
 
+    private JavaIODeveloperRepositoryImpl devRepo = new JavaIODeveloperRepositoryImpl();
+
     @Override
     public List<Team> getAll() {
         return readingFromFile();
@@ -95,7 +97,7 @@ public class JavaIOTeamRepositoryImpl implements TeamRepository {
                         String[] arrTmFields = arrTm[0].split(",");
                         if (arrTm.length > 1) {
                             devs = Arrays.stream(arrTm[1].split(","))
-                                    .map(d -> new JavaIODeveloperRepositoryImpl().getById(Integer.parseInt(d)))
+                                    .map(d -> devRepo.getById(Integer.parseInt(d)))
                                     .collect(Collectors.toList());
                         }
                         return new Team(Integer.parseInt(arrTmFields[0]), arrTmFields[1], devs);
