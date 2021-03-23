@@ -15,9 +15,10 @@ public class Developer {
         this.skills = skills;
     }
 
-    public Developer(String firstName, String lastName) {
+    public Developer(String firstName, String lastName, List<Skill> skills) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.skills = skills;
     }
 
     public Integer getId() {

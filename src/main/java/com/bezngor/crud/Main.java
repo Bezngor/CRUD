@@ -44,11 +44,11 @@ public class Main {
         System.out.println("TESTING DEVELOPER CLASS");
         System.out.println("1. Создание четырех сущностей Developer");
 
-        dr.save(new Developer("Mike", "Johnson"));
+        /*dr.save(new Developer("Mike", "Johnson"));
         dr.save(new Developer("Joe", "Smith"));
         dr.save(new Developer("July", "Brown"));
         dr.save(new Developer("Ann", "Lee"));
-        dr.save(new Developer("Ivan", "Pegoff"));
+        dr.save(new Developer("Ivan", "Pegoff"));*/
 
 
         System.out.println("2. Содержимое файла после обновления id = 1,2,3");

@@ -1,7 +1,7 @@
 package com.bezngor.crud.view;
 
+import com.bezngor.crud.controller.SkillController;
 import com.bezngor.crud.model.Skill;
-import com.bezngor.crud.repository.JavaIOSkillRepositoryImpl;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,7 +13,6 @@ public class SkillView {
                 "3 - Вывести Skill по индексу;\n4 - Вывести все Skill;\n" +
                 "5 - Удалить Skill по индексу;\nexit - Выход из модуля.");
 
-        JavaIOSkillRepositoryImpl skillRepo = new JavaIOSkillRepositoryImpl();
         boolean isExist = false;
         String buf;
 
@@ -26,27 +25,27 @@ public class SkillView {
                 switch (buf) {
                     case "1":
                         System.out.println("Введите название Skill:");
-                        skillRepo.save(new Skill(reader.readLine()));
+                        SkillController.skillRepo.save(new Skill(reader.readLine()));
                         break;
                     case "2":
                         System.out.println("Введите id обновляемого Skill:");
                         Integer id2 = Integer.parseInt(reader.readLine());
                         System.out.println("Введите название Skill:");
                         String name = reader.readLine();
-                        skillRepo.update(new Skill(id2, name));
+                        SkillController.skillRepo.update(new Skill(id2, name));
                         break;
                     case "3":
                         System.out.println("Введите id вызываемого Skill:");
                         Integer id3 = Integer.parseInt(reader.readLine());
-                        System.out.println(skillRepo.getById(id3));
+                        System.out.println(SkillController.skillRepo.getById(id3));
                         break;
                     case "4":
-                        skillRepo.getAll().forEach(System.out::println);
+                        SkillController.skillRepo.getAll().forEach(System.out::println);
                         break;
                     case "5":
-                        System.out.println("Введите id вызываемого Skill:");
+                        System.out.println("Введите id удаляемого Skill:");
                         Integer id5 = Integer.parseInt(reader.readLine());
-                        skillRepo.deleteById(id5);
+                        SkillController.skillRepo.deleteById(id5);
                         break;
                     case "exit":
                         isExist = buf.equals("exit");
