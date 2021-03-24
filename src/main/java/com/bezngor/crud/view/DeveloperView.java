@@ -1,7 +1,6 @@
 package com.bezngor.crud.view;
 
 import com.bezngor.crud.controller.DeveloperController;
-import com.bezngor.crud.model.Developer;
 import com.bezngor.crud.model.Skill;
 
 import java.io.BufferedReader;
@@ -11,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.bezngor.crud.controller.SkillController.skillRepo;
-import static com.bezngor.crud.controller.DeveloperController.devRepo;
 
 public class DeveloperView {
+    static DeveloperController devController = new DeveloperController();
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         System.out.println("1 - Сохранить новый Developer;\n2 - Обновить Developer по индексу;\n" +
                 "3 - Вывести Developer по индексу;\n4 - Вывести все Developer;\n" +
                 "5 - Удалить Developer по индексу;\nexit - Выход из модуля.");
@@ -47,7 +46,7 @@ public class DeveloperView {
                             } else isNext1 = false;
                         }
 
-                        devRepo.save(new Developer(firstName1, lastName1, skills1));
+                        devController.create(firstName1, lastName1, skills1);
                         break;
                     case "2":
                         System.out.println("Введите id обновляемого Developer:");
@@ -68,20 +67,20 @@ public class DeveloperView {
                             } else isNext2 = false;
                         }
 
-                        devRepo.update(new Developer(id2, firstName2, lastName2, skills2));
+                        devController.update(id2, firstName2, lastName2, skills2);
                         break;
                     case "3":
                         System.out.println("Введите id вызываемого Developer:");
                         Integer id3 = Integer.parseInt(reader.readLine());
-                        System.out.println(DeveloperController.devRepo.getById(id3));
+                        System.out.println(devController.getById(id3));
                         break;
                     case "4":
-                        devRepo.getAll().forEach(System.out::println);
+                        devController.getAll().forEach(System.out::println);
                         break;
                     case "5":
                         System.out.println("Введите id удаляемого Developer:");
                         Integer id5 = Integer.parseInt(reader.readLine());
-                        DeveloperController.devRepo.deleteById(id5);
+                        devController.deleteById(id5);
                         break;
                     case "exit":
                         isExist = buf.equals("exit");

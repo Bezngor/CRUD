@@ -16,9 +16,11 @@ public class Developer {
     }
 
     public Developer(String firstName, String lastName, List<Skill> skills) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.skills = skills;
+        this(null,firstName, lastName, skills);
+    }
+
+    public Developer(String firstName, String lastName) {
+        this(firstName, lastName, null);
     }
 
     public Integer getId() {

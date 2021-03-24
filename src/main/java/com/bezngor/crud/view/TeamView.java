@@ -1,7 +1,6 @@
 package com.bezngor.crud.view;
 
 import com.bezngor.crud.controller.TeamController;
-import com.bezngor.crud.model.Team;
 import com.bezngor.crud.model.Developer;
 
 import java.io.BufferedReader;
@@ -10,12 +9,12 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.bezngor.crud.controller.TeamController.teamRepo;
 import static com.bezngor.crud.controller.DeveloperController.devRepo;
 
 public class TeamView {
+    static TeamController teamController = new TeamController();
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         System.out.println("1 - Сохранить новый Team;\n2 - Обновить Team по индексу;\n" +
                 "3 - Вывести Team по индексу;\n4 - Вывести все Team;\n" +
                 "5 - Удалить Team по индексу;\nexit - Выход из модуля.");
@@ -45,7 +44,7 @@ public class TeamView {
                             } else isNext1 = false;
                         }
 
-                        teamRepo.save(new Team(name1, devs1));
+                        teamController.create(name1, devs1);
                         break;
                     case "2":
                         System.out.println("Введите id обновляемого Team:");
@@ -64,7 +63,7 @@ public class TeamView {
                             } else isNext2 = false;
                         }
 
-                        teamRepo.update(new Team(id2, name2, devs2));
+                        teamController.update(id2, name2, devs2);
                         break;
                     case "3":
                         System.out.println("Введите id вызываемого Team:");
@@ -72,12 +71,12 @@ public class TeamView {
                         System.out.println(TeamController.teamRepo.getById(id3));
                         break;
                     case "4":
-                        teamRepo.getAll().forEach(System.out::println);
+                        teamController.getAll().forEach(System.out::println);
                         break;
                     case "5":
                         System.out.println("Введите id удаляемого Team:");
                         Integer id5 = Integer.parseInt(reader.readLine());
-                        TeamController.teamRepo.deleteById(id5);
+                        teamController.deleteById(id5);
                         break;
                     case "exit":
                         isExist = buf.equals("exit");
