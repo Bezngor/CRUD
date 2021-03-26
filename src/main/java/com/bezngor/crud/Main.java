@@ -1,13 +1,17 @@
 package com.bezngor.crud;
 
-import java.util.Scanner;
+import com.bezngor.crud.view.DeveloperView;
+import com.bezngor.crud.view.SkillView;
+import com.bezngor.crud.view.TeamView;
 
-import static com.bezngor.crud.view.DeveloperView.*;
-import static com.bezngor.crud.view.SkillView.*;
-import static com.bezngor.crud.view.TeamView.*;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        SkillView skillView = new SkillView();
+        DeveloperView devView = new DeveloperView();
+        TeamView teamView = new TeamView();
+
         System.out.println("Выберите тип операции:\n1 - Операции с Skill\n" +
                 "2 - Операции с Developer\n3 - Операции с Team\nquit - Завершить работу.");
 
@@ -19,13 +23,13 @@ public class Main {
             str = scan.nextLine();
             switch (str) {
                 case "1":
-                    skillViewStart();
+                    skillView.skillViewStart();
                     break;
                 case "2":
-                    devViewStart();
+                    devView.devViewStart();
                     break;
                 case "3":
-                    teamViewStart();
+                    teamView.teamViewStart();
                     break;
                 case "quit":
                     hasNext = false;

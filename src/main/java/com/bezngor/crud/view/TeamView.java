@@ -12,7 +12,7 @@ import static com.bezngor.crud.controller.DeveloperController.devRepo;
 public class TeamView {
     static TeamController teamController = new TeamController();
 
-    public static void teamViewStart() {
+    public void teamViewStart() {
         System.out.println("1 - Сохранить новый Team;\n2 - Обновить Team по индексу;\n" +
                 "3 - Вывести Team по индексу;\n4 - Вывести все Team;\n" +
                 "5 - Удалить Team по индексу;\nexit - Выход из модуля.");

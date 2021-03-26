@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class SkillView {
     static SkillController skillController = new SkillController();
 
-    public static void skillViewStart() {
+    public void skillViewStart() {
         System.out.println("1 - Сохранить новый Skill;\n2 - Обновить Skill по индексу;\n" +
                 "3 - Вывести Skill по индексу;\n4 - Вывести все Skill;\n" +
                 "5 - Удалить Skill по индексу;\nexit - Выход из модуля.");

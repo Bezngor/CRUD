@@ -12,7 +12,7 @@ import static com.bezngor.crud.controller.SkillController.skillRepo;
 public class DeveloperView {
     static DeveloperController devController = new DeveloperController();
 
-    public static void devViewStart() {
+    public void devViewStart() {
         System.out.println("1 - Сохранить новый Developer;\n2 - Обновить Developer по индексу;\n" +
                 "3 - Вывести Developer по индексу;\n4 - Вывести все Developer;\n" +
                 "5 - Удалить Developer по индексу;\nexit - Выход из модуля.");
